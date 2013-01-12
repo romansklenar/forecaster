@@ -29,8 +29,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-gem 'unicorn'
+# Use unicorn as the app server in production
+gem 'unicorn', group: :production
+
+# Use this as the app server in development
+gem 'thin', group: :development
 
 # Deploy with Capistrano
 # gem 'capistrano', group: :development
