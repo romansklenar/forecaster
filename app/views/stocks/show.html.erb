@@ -1,0 +1,43 @@
+<% title "Stock details" %>
+
+<table class="table table-attributes">
+  <tbody>
+    <tr>
+      <th><%= Stock.human_attribute_name(:company) %></th>
+      <td><%= @stock.company %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Stock.human_attribute_name(:date) %></th>
+      <td><%= @stock.date %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Stock.human_attribute_name(:open) %></th>
+      <td><%= @stock.open %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Stock.human_attribute_name(:high) %></th>
+      <td><%= @stock.high %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Stock.human_attribute_name(:low) %></th>
+      <td><%= @stock.low %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Stock.human_attribute_name(:close) %></th>
+      <td><%= @stock.close %></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<div class="form-actions">
+<%= link_to t('buttons.edit'), edit_stock_path(@stock), :class => 'btn btn-primary' %>
+<%= link_to t('buttons.delete'), stock_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to t('buttons.back'), stocks_path, :class => 'btn' %>
+</div>
