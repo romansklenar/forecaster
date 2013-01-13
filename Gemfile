@@ -42,3 +42,6 @@ gem 'thin', group: :development
 
 # To use debugger
 # gem 'debugger'
+
+# Use SimpleForm as form builder
+gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
