@@ -1,0 +1,17 @@
+<%= simple_form_for(@message, :html => { :class => 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :company %>
+    <%= f.input :title %>
+    <%= f.input :link %>
+    <%= f.input :date %>
+    <%= f.input :content_html %>
+    <%= f.input :content_text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, nil, :class => 'btn btn-primary' %>
+    <%= link_to t('buttons.cancell'), messages_path, :class => 'btn' %>
+  </div>
+<% end %>

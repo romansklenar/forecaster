@@ -1,0 +1,43 @@
+<% title "Message details" %>
+
+<table class="table table-attributes">
+  <tbody>
+    <tr>
+      <th><%= Message.human_attribute_name(:company) %></th>
+      <td><%= @message.company %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Message.human_attribute_name(:title) %></th>
+      <td><%= @message.title %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Message.human_attribute_name(:link) %></th>
+      <td><%= @message.link %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Message.human_attribute_name(:date) %></th>
+      <td><%= @message.date %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Message.human_attribute_name(:content_html) %></th>
+      <td><%= @message.content_html %></td>
+    </tr>
+    
+    <tr>
+      <th><%= Message.human_attribute_name(:content_text) %></th>
+      <td><%= @message.content_text %></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<div class="form-actions">
+<%= link_to t('buttons.edit'), edit_message_path(@message), :class => 'btn btn-primary' %>
+<%= link_to t('buttons.delete'), message_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to t('buttons.back'), messages_path, :class => 'btn' %>
+</div>

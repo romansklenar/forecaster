@@ -1,0 +1,36 @@
+<% title "Listing messages" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Message.human_attribute_name(:company) %></th>
+      <th><%= Message.human_attribute_name(:title) %></th>
+      <th><%= Message.human_attribute_name(:link) %></th>
+      <th><%= Message.human_attribute_name(:date) %></th>
+      <th><%= Message.human_attribute_name(:content_html) %></th>
+      <th><%= Message.human_attribute_name(:content_text) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @messages) do |message| %>
+      <td><%= message.company %></td>
+      <td><%= message.title %></td>
+      <td><%= message.link %></td>
+      <td><%= message.date %></td>
+      <td><%= message.content_html %></td>
+      <td><%= message.content_text %></td>
+      <td>
+        <%= link_to t('buttons.show'), message, class: 'btn btn-mini btn-primary' %>
+        <%= link_to t('buttons.edit'), edit_message_path(message), class: 'btn btn-mini' %>
+        <%= link_to t('buttons.delete'), message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to t('buttons.new'), new_message_path, class: 'btn btn-primary' %>
