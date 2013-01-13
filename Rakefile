@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Skeleton::Application.load_tasks
+Forecaster::Application.load_tasks

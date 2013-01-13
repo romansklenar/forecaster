@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: skeleton_development
+  database: forecaster_development
   pool: 5
   username:
   password:
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: skeleton_test
+  database: forecaster_test
   pool: 5
   username:
   password:
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: skeleton_production
+  database: forecaster_production
   pool: 5
   username:
   password:
