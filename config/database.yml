@@ -17,9 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: forecaster_development
+  database: skeleton_development
   pool: 5
-  username: forecaster
+  username: skeleton
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,15 +46,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: forecaster_test
+  database: skeleton_test
   pool: 5
-  username: forecaster
+  username: skeleton
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: forecaster_production
+  database: skeleton_production
   pool: 5
-  username: forecaster
+  username: skeleton
   password:

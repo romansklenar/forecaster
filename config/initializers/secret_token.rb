@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Forecaster::Application.config.secret_key_base = '1d9786ccb482a184d73c6760c47bda66755503affd545b0267a7623db7cce2fa68b7f738f5d9de1ad2260c3a7e90185124c6defc49811bc75e07dfff510a24ef'
+Skeleton::Application.config.secret_key_base = 'aab35771a18b4e5281173b86e0c2f7d3c0e1534ba738d087701c3ba072c733e29dceab005577d7e93012ee270c641a4b9a8ade6c6fe2b8eb34ab3f88b7149e35'
