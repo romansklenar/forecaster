@@ -1,12 +1,20 @@
-<p id="notice"><%%= notice %></p>
+<%% title "<%= human_name %> details" %>
 
+<table class="table table-attributes">
+  <tbody>
 <% attributes.each do |attribute| -%>
-<p>
-  <strong><%= attribute.human_name %>:</strong>
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-</p>
-
+    <tr>
+      <th><%%= <%= class_name %>.human_attribute_name(:<%= attribute.name %>) %></th>
+      <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
+    </tr>
+    
 <% end -%>
+  </tbody>
+</table>
 
-<%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-<%%= link_to 'Back', <%= index_helper %>_path %>
+
+<div class="form-actions">
+<%%= link_to t('buttons.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-primary' %>
+<%%= link_to t('buttons.delete'), <%= singular_table_name %>_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%%= link_to t('buttons.back'), <%= index_helper %>_path, :class => 'btn' %>
+</div>
