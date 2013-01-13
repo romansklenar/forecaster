@@ -16,8 +16,62 @@
   <%= yield(:head) %>
 </head>
 <body>
+  <header>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Some Store</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Browse Products" %></li>
+              <li><%= link_to "Price List" %></li>
+              <li><%= link_to "Contact Us" %></li>
+              <li><%= link_to "Cart" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <%= yield %>
+  <div class="container">
+    <div id="flashes">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) && !msg.blank? %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <%= content_tag :div, raw(msg), :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+
+    <div class="row">
+      <div id="content" class="span9">
+        <%= content_tag :h1, yield(:title) %>
+        <%= yield %>
+      </div>
+      <div id="sidebar" class="span3">
+        <h2>Sidebar</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+
+
+    <footer>
+      <hr />
+      <p class="pull-left">&copy; 2013 <%= " - #{Date.today.year}" if Date.today.year > 2013 %></p>
+      <p class="pull-right">
+        <%= link_to "Admin" %>
+      </p>
+    </footer>
+
+  </div>
 
   <!-- Placed at the end of the document so the pages load faster -->
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
