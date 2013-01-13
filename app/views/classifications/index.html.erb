@@ -1,0 +1,30 @@
+<% title "Listing classifications" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= Classification.human_attribute_name(:company) %></th>
+      <th><%= Classification.human_attribute_name(:text) %></th>
+      <th><%= Classification.human_attribute_name(:category) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @classifications) do |classification| %>
+      <td><%= classification.company %></td>
+      <td><%= classification.text %></td>
+      <td><%= classification.category %></td>
+      <td>
+        <%= link_to t('buttons.show'), classification, class: 'btn btn-mini btn-primary' %>
+        <%= link_to t('buttons.edit'), edit_classification_path(classification), class: 'btn btn-mini' %>
+        <%= link_to t('buttons.delete'), classification, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to t('buttons.new'), new_classification_path, class: 'btn btn-primary' %>
