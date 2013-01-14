@@ -8,7 +8,7 @@
   </div>
 
   <div class="form-actions">
-    <%%= f.button :submit, nil, :class => 'btn btn-primary' %>
-    <%%= link_to t('buttons.cancell'), <%= index_helper %>_path, :class => 'btn' %>
+    <%%= f.button :submit, nil, :class => 'btn btn-primary', :disable_with => t('buttons.wait') %>
+    <%%= link_to t('buttons.cancel'), <%= index_helper %>_path, :class => 'btn' %>
   </div>
 <%% end %>

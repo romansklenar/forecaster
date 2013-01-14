@@ -16,9 +16,9 @@
       <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
       <td>
-        <%%= link_to t('buttons.show'), <%= singular_table_name %>, class: 'btn btn-mini btn-primary' %>
+        <%%= link_to t('buttons.show'), <%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-mini btn-primary' %>
         <%%= link_to t('buttons.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-mini' %>
-        <%%= link_to t('buttons.delete'), <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+        <%%= link_to t('buttons.delete'), <%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
       </td>
     </tr>
     <%% end %>
