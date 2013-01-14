@@ -43,6 +43,12 @@ gem 'thin', group: :development
 # To use debugger
 # gem 'debugger'
 
+# better console output
+group :console do
+  gem 'hirb',   require: false
+  gem 'wirble', require: false
+end
+
 # Use SimpleForm as form builder
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
