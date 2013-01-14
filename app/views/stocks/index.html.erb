@@ -22,9 +22,9 @@
       <td><%= stock.low %></td>
       <td><%= stock.close %></td>
       <td>
-        <%= link_to t('buttons.show'), stock, class: 'btn btn-mini btn-primary' %>
-        <%= link_to t('buttons.edit'), edit_stock_path(stock), class: 'btn btn-mini' %>
-        <%= link_to t('buttons.delete'), stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+        <%= link_to t('buttons.show'), company_stock_path(@company, stock), class: 'btn btn-mini btn-primary' %>
+        <%= link_to t('buttons.edit'), edit_company_stock_path(@company, stock), class: 'btn btn-mini' %>
+        <%= link_to t('buttons.delete'), company_stock_path(@company, stock), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
       </td>
     </tr>
     <% end %>
@@ -33,4 +33,4 @@
 
 <br />
 
-<%= link_to t('buttons.new'), new_stock_path, class: 'btn btn-primary' %>
+<%= link_to t('buttons.new'), new_company_stock_path(@company), class: 'btn btn-primary' %>

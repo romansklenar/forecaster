@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :set_company
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
   def index
     # get IDs of last 1000 messages (find_each doesn't support limit)
-    ids = Message.order(:id => :desc).limit(1000).pluck(:id) 
-    @messages = Message.where(:id => ids.min..ids.max)
+    ids = @company.messages.order(:id => :desc).limit(1000).pluck(:id) 
+    @messages = @company.messages.where(:id => ids.min..ids.max)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +20,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
+    @message = @company.messages.new
   end
 
   # GET /messages/1/edit
@@ -28,10 +29,10 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.new(message_params)
+    @message = @company.messages.new(message_params)
 
     if @message.save
-      redirect_to @message, notice: 'Message was successfully created.'
+      redirect_to company_message_url(@company, @message), notice: 'Message was successfully created.'
     else
       render action: 'new'
     end
@@ -40,7 +41,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   def update
     if @message.update(message_params)
-      redirect_to @message, notice: 'Message was successfully updated.'
+      redirect_to company_message_url(@company, @message), notice: 'Message was successfully updated.'
     else
       render action: 'edit'
     end
@@ -49,13 +50,17 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   def destroy
     @message.destroy
-    redirect_to messages_url
+    redirect_to company_messages_url(@company)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_company
+      @company = Company.find(params[:company_id])
+    end
+
     def set_message
-      @message = Message.find(params[:id])
+      @message = @company.messages.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

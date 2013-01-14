@@ -22,7 +22,7 @@
 
 
 <div class="form-actions">
-<%= link_to t('buttons.edit'), edit_classification_path(@classification), :class => 'btn btn-primary' %>
-<%= link_to t('buttons.delete'), classification_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-<%= link_to t('buttons.back'), classifications_path, :class => 'btn' %>
+<%= link_to t('buttons.edit'), edit_company_classification_path(@company, @classification), :class => 'btn btn-primary' %>
+<%= link_to t('buttons.delete'), company_classification_path(@company, @classification), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to t('buttons.back'), company_classifications_path(@company), :class => 'btn' %>
 </div>

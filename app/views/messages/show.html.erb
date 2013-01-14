@@ -37,7 +37,7 @@
 
 
 <div class="form-actions">
-<%= link_to t('buttons.edit'), edit_message_path(@message), :class => 'btn btn-primary' %>
-<%= link_to t('buttons.delete'), message_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-<%= link_to t('buttons.back'), messages_path, :class => 'btn' %>
+<%= link_to t('buttons.edit'), edit_company_message_path(@company, @message), :class => 'btn btn-primary' %>
+<%= link_to t('buttons.delete'), company_message_path(@company, @message), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to t('buttons.back'), company_messages_path(@company), :class => 'btn' %>
 </div>

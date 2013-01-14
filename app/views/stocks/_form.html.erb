@@ -1,4 +1,4 @@
-<%= simple_form_for(@stock, :html => { :class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for([@company, @stock], :html => { :class => 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -12,6 +12,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, nil, :class => 'btn btn-primary' %>
-    <%= link_to t('buttons.cancell'), stocks_path, :class => 'btn' %>
+    <%= link_to t('buttons.cancel'), company_stocks_path(@company), :class => 'btn' %>
   </div>
 <% end %>

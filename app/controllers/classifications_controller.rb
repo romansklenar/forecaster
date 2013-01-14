@@ -1,9 +1,10 @@
 class ClassificationsController < ApplicationController
+  before_action :set_company
   before_action :set_classification, only: [:show, :edit, :update, :destroy]
 
   # GET /classifications
   def index
-    @classifications = Classification.all
+    @classifications = @company.classifications.all
   end
 
   # GET /classifications/1
@@ -12,7 +13,7 @@ class ClassificationsController < ApplicationController
 
   # GET /classifications/new
   def new
-    @classification = Classification.new
+    @classification = @company.classifications.new
   end
 
   # GET /classifications/1/edit
@@ -21,10 +22,10 @@ class ClassificationsController < ApplicationController
 
   # POST /classifications
   def create
-    @classification = Classification.new(classification_params)
+    @classification = @company.classifications.new(classification_params)
 
     if @classification.save
-      redirect_to @classification, notice: 'Classification was successfully created.'
+      redirect_to company_classification_url(@company, @classification), notice: 'Classification was successfully created.'
     else
       render action: 'new'
     end
@@ -33,7 +34,7 @@ class ClassificationsController < ApplicationController
   # PATCH/PUT /classifications/1
   def update
     if @classification.update(classification_params)
-      redirect_to @classification, notice: 'Classification was successfully updated.'
+      redirect_to company_classification_url(@company, @classification), notice: 'Classification was successfully updated.'
     else
       render action: 'edit'
     end
@@ -42,13 +43,17 @@ class ClassificationsController < ApplicationController
   # DELETE /classifications/1
   def destroy
     @classification.destroy
-    redirect_to classifications_url
+    redirect_to company_classifications_url(@company)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_company
+      @company = Company.find(params[:company_id])
+    end
+
     def set_classification
-      @classification = Classification.find(params[:id])
+      @classification = @company.classifications.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
