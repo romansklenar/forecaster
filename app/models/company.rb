@@ -26,4 +26,8 @@ class Company < ActiveRecord::Base
 
     @classifier
   end
+
+  def to_param
+    code
+  end
 end
