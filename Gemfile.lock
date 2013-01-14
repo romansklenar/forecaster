@@ -103,6 +103,7 @@ GEM
       multi_json (~> 1.0)
     fast-stemmer (1.0.1)
     hike (1.2.1)
+    htmlentities (4.3.1)
     i18n (0.6.1)
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
@@ -161,6 +162,7 @@ DEPENDENCIES
   bootstrap-sass
   classifier
   coffee-rails!
+  htmlentities
   jquery-rails
   pg
   rails!

@@ -34,3 +34,9 @@
 <br />
 
 <%= link_to t('buttons.new'), new_company_stock_path(@company), class: 'btn btn-primary' %>
+
+<p>
+<%= link_to 'Back', companies_path %> |
+<%= link_to 'Stocks Import', import_company_stocks_path(@company) %> |
+<%= link_to 'Messages Import', import_company_messages_path(@company) %>
+</p>

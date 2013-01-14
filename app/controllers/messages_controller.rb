@@ -53,6 +53,13 @@ class MessagesController < ApplicationController
     redirect_to company_messages_url(@company)
   end
 
+  def import
+    @company.import_messages
+    redirect_to :back, notice: "Messages for #{@company.name} was successfully imported."
+  rescue
+    redirect_to :back, notice: "Import was not successful"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
