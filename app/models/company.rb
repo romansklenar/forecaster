@@ -14,4 +14,16 @@ class Company < ActiveRecord::Base
 
   def import_messages
   end
+
+  def classifier
+    unless defined?(@classifier)
+      require 'classifier'
+      
+      @classifier = Classifier::Bayes.new('positive', 'negative')
+      classifications.positive.pluck(:text).each { |s| @classifier.train(:positive, s) }
+      classifications.negative.pluck(:text).each { |s| @classifier.train(:negative, s) }
+    end
+
+    @classifier
+  end
 end

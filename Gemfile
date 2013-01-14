@@ -45,3 +45,5 @@ gem 'thin', group: :development
 
 # Use SimpleForm as form builder
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
+
+gem 'classifier',   require: false
