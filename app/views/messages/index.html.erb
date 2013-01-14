@@ -7,24 +7,20 @@
       <th><%= Message.human_attribute_name(:title) %></th>
       <th><%= Message.human_attribute_name(:link) %></th>
       <th><%= Message.human_attribute_name(:date) %></th>
-      <th><%= Message.human_attribute_name(:content_html) %></th>
-      <th><%= Message.human_attribute_name(:content_text) %></th>
       <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <%= content_tag_for(:tr, @messages) do |message| %>
-      <td><%= message.company %></td>
+      <td><%= link_to message.company.name, message.company %></td>
       <td><%= message.title %></td>
-      <td><%= message.link %></td>
-      <td><%= message.date %></td>
-      <td><%= message.content_html %></td>
-      <td><%= message.content_text %></td>
+      <td><%= link_to "See", message.link %></td>
+      <td><%= localize message.date, format: :long %></td>
       <td>
-        <%= link_to t('buttons.show'), company_message_path(@company), class: 'btn btn-mini btn-primary' %>
+        <%= link_to t('buttons.show'), company_message_path(@company, message), class: 'btn btn-mini btn-primary' %>
         <%= link_to t('buttons.edit'), edit_company_message_path(@company, message), class: 'btn btn-mini' %>
-        <%= link_to t('buttons.delete'), company_message_path(@company), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+        <%= link_to t('buttons.delete'), company_message_path(@company, message), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
       </td>
     </tr>
     <% end %>
@@ -34,3 +30,4 @@
 <br />
 
 <%= link_to t('buttons.new'), new_company_message_path(@company), class: 'btn btn-primary' %>
+<%= link_to t('buttons.import'), import_company_messages_path(@company), class: 'btn' %>

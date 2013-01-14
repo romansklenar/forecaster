@@ -19,12 +19,12 @@
     
     <tr>
       <th><%= Company.human_attribute_name(:messages_url) %></th>
-      <td><%= @company.messages_url %></td>
+      <td><%= link_to @company.messages_url %></td>
     </tr>
     
     <tr>
       <th><%= Company.human_attribute_name(:stocks_url) %></th>
-      <td><%= @company.stocks_url %></td>
+      <td><%= link_to @company.stocks_url %></td>
     </tr>
     
   </tbody>

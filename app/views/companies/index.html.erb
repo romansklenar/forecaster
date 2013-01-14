@@ -17,8 +17,8 @@
       <td><%= company.name %></td>
       <td><%= company.description %></td>
       <td><%= company.code %></td>
-      <td><%= company.messages_url %></td>
-      <td><%= company.stocks_url %></td>
+      <td><%= link_to "See", company.messages_url %></td>
+      <td><%= link_to "See", company.stocks_url %></td>
       <td>
         <%= link_to t('buttons.show'), company, class: 'btn btn-mini btn-primary' %>
         <%= link_to t('buttons.edit'), edit_company_path(company), class: 'btn btn-mini' %>

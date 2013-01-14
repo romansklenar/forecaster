@@ -4,7 +4,7 @@
   <tbody>
     <tr>
       <th><%= Message.human_attribute_name(:company) %></th>
-      <td><%= @message.company %></td>
+      <td><%= link_to @message.company.name, @message.company %></td>
     </tr>
     
     <tr>
@@ -14,22 +14,17 @@
     
     <tr>
       <th><%= Message.human_attribute_name(:link) %></th>
-      <td><%= @message.link %></td>
+      <td><%= link_to @message.link %></td>
     </tr>
     
     <tr>
       <th><%= Message.human_attribute_name(:date) %></th>
-      <td><%= @message.date %></td>
+      <td><%= localize @message.date %></td>
     </tr>
     
     <tr>
       <th><%= Message.human_attribute_name(:content_html) %></th>
-      <td><%= @message.content_html %></td>
-    </tr>
-    
-    <tr>
-      <th><%= Message.human_attribute_name(:content_text) %></th>
-      <td><%= @message.content_text %></td>
+      <td><%= raw @message.content_html %></td>
     </tr>
     
   </tbody>

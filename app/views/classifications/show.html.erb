@@ -4,7 +4,7 @@
   <tbody>
     <tr>
       <th><%= Classification.human_attribute_name(:company) %></th>
-      <td><%= @classification.company %></td>
+      <td><%= link_to @classification.company.name, @classification.company %></td>
     </tr>
     
     <tr>
