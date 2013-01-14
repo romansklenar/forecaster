@@ -16,4 +16,26 @@ namespace :db do
     Rake::Task["db:seed"].invoke
   end
 
-end
+  namespace :import do
+    desc 'Imports current stock values from Yahoo Finance API for all companies'
+    task stocks: :environment do
+      require 'csv'
+      require 'open-uri'
+
+      codes = Company.pluck(:code).join('+')
+      url = "http://finance.yahoo.com/d/quotes.csv?s=#{codes}&f=sd1ohgl1"
+      header = [:code, :date, :open, :high, :low, :close]
+
+      Stock.transaction do
+        CSV.parse(open(url).read).each do |i|
+          row = Hash[[header, i].transpose]
+          Stock.where(open: row[:open], high: row[:high], low: row[:low], close: row[:close]).
+                where(date: Date.strptime(row[:date], '%m/%d/%Y')).
+                where(company: Company.find_by(code: row[:code])).
+                first_or_create!
+        end
+      end
+    end
+  end # namespace :import
+
+end # namespace :db
