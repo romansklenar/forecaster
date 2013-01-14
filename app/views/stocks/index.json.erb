@@ -1,0 +1,5 @@
+[
+<% @stocks.find_each(:batch_size => 250) do |stock| %>
+  <%= raw stock.to_json %><% unless @stocks.last == stock %>,<% end %>
+<% end %>
+]

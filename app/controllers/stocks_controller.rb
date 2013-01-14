@@ -3,7 +3,12 @@ class StocksController < ApplicationController
 
   # GET /stocks
   def index
-    @stocks = Stock.all
+    @stocks = Stock.where("date > '2000/1/1'")
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json # use own render because of faster loading by find_each method
+    end
   end
 
   # GET /stocks/1
