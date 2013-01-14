@@ -1,0 +1,5 @@
+[
+<% @messages.find_each(:batch_size => 100) do |message| %>
+  <%= raw message.to_json %><% unless @messages.last == message %>,<% end %>
+<% end %>
+]

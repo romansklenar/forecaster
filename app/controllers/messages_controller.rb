@@ -3,7 +3,14 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.all
+    # get IDs of last 1000 messages (find_each doesn't support limit)
+    ids = Message.order(:id => :desc).limit(1000).pluck(:id) 
+    @messages = Message.where(:id => ids.min..ids.max)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json # use own render because of faster loading by find_each method
+    end
   end
 
   # GET /messages/1
