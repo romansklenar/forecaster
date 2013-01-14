@@ -1,11 +1,11 @@
 Forecaster::Application.routes.draw do
 
   resources :companies do
-    resources :messages, :stocks do
+    resources :stocks, only: [:index]
+    resources :classifications
+    resources :messages do 
       get 'import', on: :collection
     end
-
-    resources :classifications
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
