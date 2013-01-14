@@ -21,3 +21,14 @@
 
 en:
   hello: "Hello world"
+
+  buttons:
+    wait: "Please wait…"
+    confirm: Are you sure?
+    cancel: Cancel
+    back: Back
+    new: New
+    create: Create
+    edit: Edit
+    show: Show
+    delete: Delete
