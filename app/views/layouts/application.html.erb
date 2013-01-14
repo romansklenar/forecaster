@@ -26,13 +26,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Some Store</a>
+          <%= link_to "Forecaster", root_path, class: "brand" %>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Browse Products" %></li>
-              <li><%= link_to "Price List" %></li>
-              <li><%= link_to "Contact Us" %></li>
-              <li><%= link_to "Cart" %></li>
+              <%= content_tag :li, class: (controller?('companies') ? "active" : nil) do %>
+                <%= link_to "Companies", companies_path %>
+              <% end %>
+              <%= content_tag :li, class: (controller?('messages') ? "active" : nil) do %>
+                <%= link_to "Messages", company_messages_path(@company) %>
+              <% end if @company %>
+              <%= content_tag :li, class: (controller?('stocks') ? "active" : nil) do %>
+                <%= link_to "Stocks", company_stocks_path(@company) %>
+              <% end if @company %>
+              <%= content_tag :li, class: (controller?('classifications') ? "active" : nil) do %>
+                <%= link_to "Classifications", company_classifications_path(@company) %>
+              <% end if @company %>
             </ul>
           </div>
         </div>
@@ -53,13 +61,9 @@
     </div>
 
     <div class="row">
-      <div id="content" class="span9">
+      <div id="content" class="span12">
         <%= content_tag :h1, yield(:title) %>
         <%= yield %>
-      </div>
-      <div id="sidebar" class="span3">
-        <h2>Sidebar</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </div>
 
@@ -68,7 +72,7 @@
       <hr />
       <p class="pull-left">&copy; 2013 <%= " - #{Date.today.year}" if Date.today.year > 2013 %></p>
       <p class="pull-right">
-        <%= link_to "Admin" %>
+        <%#= link_to "Admin" %>
       </p>
     </footer>
 
