@@ -47,4 +47,5 @@ gem 'thin', group: :development
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
 gem 'classifier',   require: false
+gem 'nokogiri',     require: false
 gem 'htmlentities', require: false
